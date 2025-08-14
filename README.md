@@ -161,3 +161,10 @@ $ brew install automake libtool git sox cmake wget
 Once the dependencies are installed, you can then run the `build_osx.sh` script inside the source tree to build
 FreeDV and associated libraries (codec2, hamlib). A FreeDV.app app bundle will be created inside the build_osx/src
 folder which can be copied to your system's Applications folder.
+
+If you have a developer account with signing certificate, sign the code and create a disk image by:
+
+```
+$ cd build_osx
+$ make release
+```
