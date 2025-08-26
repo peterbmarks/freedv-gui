@@ -10,17 +10,17 @@ This document describes how to build the FreeDV GUI program for various operatin
 ## Installing prerequisites on Ubuntu Linux
 
   ```
-  $ sudo apt install libspeexdsp-dev libsamplerate0-dev sox git \
+  sudo apt install libspeexdsp-dev libsamplerate0-dev sox git \
   libwxgtk3.2-dev libhamlib-dev libasound2-dev libao-dev \
   libgsm1-dev libsndfile1-dev cmake module-assistant build-essential
-  $ git clone https://github.com/drowe67/freedv-gui.git
-  $ cd freedv-gui
+  git clone https://github.com/drowe67/freedv-gui.git
+  cd freedv-gui
 
-  (if using pipewire/PulseAudio -- recommended and the default) 
-  $ sudo apt install libpulse-dev
+  #(if using pipewire/PulseAudio -- recommended and the default) 
+  sudo apt install libpulse-dev
   
-  (if using PortAudio)
-  $ sudo apt install portaudio19-dev
+  #(if using PortAudio)
+  sudo apt install portaudio19-dev
   ```
 
   (Depending on release you may need to use `libwxgtk3.0-gtk3-dev` instead of `libwxgtk3.2-dev`.)
@@ -28,18 +28,18 @@ This document describes how to build the FreeDV GUI program for various operatin
 ## Installing prerequisites on Fedora Linux
 
   ```
-  $ sudo dnf groupinstall "Development Tools"
-  $ sudo dnf install cmake wxGTK3-devel libsamplerate-devel \
+  sudo dnf groupinstall "Development Tools"
+  sudo dnf install cmake wxGTK3-devel libsamplerate-devel \
     libsndfile-devel speexdsp-devel hamlib-devel alsa-lib-devel libao-devel \
     gsm-devel gcc-c++ sox
-  $ git clone https://github.com/drowe67/freedv-gui.git
-  $ cd freedv-gui
+  git clone https://github.com/drowe67/freedv-gui.git
+  cd freedv-gui
 
-  (if using pipewire/PulseAudio -- default and recommended)
-  $ sudo dnf install pulseaudio-libs-devel
+  #(if using pipewire/PulseAudio -- default and recommended)
+  sudo dnf install pulseaudio-libs-devel
 
-  (if using PortAudio)
-  $ sudo dnf install portaudio-devel
+  #(if using PortAudio)
+  sudo dnf install portaudio-devel
   ```
 
 ## Running FreeDV on Linux
@@ -48,11 +48,11 @@ This document describes how to build the FreeDV GUI program for various operatin
    but you can also use pip in a Python virtual environment (recommended to ensure the latest versions):
 
    ```
-   $ cd freedv-gui
-   $ python3 -m venv rade-venv
-   $ . ./rade-venv/bin/activate
-   (rade-venv) $ pip3 install torch --index-url https://download.pytorch.org/whl/cpu
-   (rade-venv) $ pip3 install matplotlib
+   cd freedv-gui
+   python3 -m venv rade-venv
+   . ./rade-venv/bin/activate
+   pip3 install torch --index-url https://download.pytorch.org/whl/cpu
+   pip3 install matplotlib
    ```
 
    *Note: you may need to install `python3-venv` or your distro's equivalent package in order to create Python virtual environments. Python 3.9+ is also required for PyTorch to work.*
@@ -60,27 +60,27 @@ This document describes how to build the FreeDV GUI program for various operatin
 2. Build FreeDV to make sure the correct dependencies are linked in (namely numpy):
 
    ```
-   (rade-venv) $ pwd
-   /home/<user>/freedv-gui
-   (rade-venv) $ ./build_linux.sh
+   pwd
+   # should be: /home/<user>/freedv-gui
+   ./build_linux.sh
    ```
 
 3. Make sure FreeDV can find the ML model:
 
    ```
-   (rade-venv) $ pwd
-   /home/<user>/freedv-gui
-   (rade-venv) $ cd build_linux
-   (rade-venv) $ ln -s $(pwd)/rade_src/model19_check3 model19_check3
+   pwd
+   # should be: /home/<user>/freedv-gui
+   cd build_linux
+   ln -s $(pwd)/rade_src/model19_check3 model19_check3
    ```
 
 4. Execute FreeDV:
 
    ```
-   (rade-venv) $ pwd
-   /home/<user>/freedv-gui/build_linux
-   (rade-venv) $ export GDK_BACKEND=x11 # optional, see (*) below
-   (rade-venv) $ PYTHONPATH="$(pwd)/rade_src:$PYTHONPATH" src/freedv
+   pwd
+   $ should be: /home/<user>/freedv-gui/build_linux
+   export GDK_BACKEND=x11 # optional, see (*) below
+   PYTHONPATH="$(pwd)/rade_src:$PYTHONPATH" src/freedv
    ```
 
 (*) If your Linux distribution and/or desktop environment uses Wayland, FreeDV will always open in the middle 
@@ -110,11 +110,11 @@ user by defining the environment variable `USE_NATIVE_AUDIO=0` before running th
 
 You need to install the codec2 shared libraries, and freedv-gui:
   ```
-  $ cd ~/freedv-gui/codec2/build_linux
-  $ sudo make install
-  $ cd ~/freedv-gui/build_linux
-  $ sudo make install
-  $ sudo ldconfig
+  cd ~/freedv-gui/codec2/build_linux
+  sudo make install
+  cd ~/freedv-gui/build_linux
+  sudo make install
+  sudo ldconfig
   ```
  
 ## Testing
@@ -149,13 +149,13 @@ one to build FreeDV for ARM as well as for Intel Windows systems.
 Using MacPorts, most of the appropriate dependencies can be installed by:
 
 ```
-$ sudo port install automake git libtool sox +universal cmake wget pkgconf
+sudo port install automake git libtool sox +universal cmake wget pkgconf
 ```
 
 and on Homebrew:
 
 ```
-$ brew install automake libtool git sox cmake wget pkgconf
+brew install automake libtool git sox cmake wget pkgconf
 ```
 
 Once the dependencies are installed, you can then run the `build_osx.sh` script inside the source tree to build
