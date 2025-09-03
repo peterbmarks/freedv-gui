@@ -395,6 +395,14 @@ FreeDV will also show the callsigns of previously received signals. To view thos
 next to the last received callsign at the bottom of the window. These are in descending order by time
 of receipt (i.e. the most recently received callsign will appear at the top of the list).
 
+## Messages
+
+Entering a message in the message field and clicking the Send button will send that text to the server for display in the "Msg" column
+of your station listing. A right-click on the Send button displays a menu with "Send and save message" and "Only save message".
+Saved messages will appear in the Message field drop down menu. Saved messages can be cleared with the Clear button.
+
+A right-click on the Clear button displays a menu with "Remove selected from list" and "Clear all messages from list".
+
 # Multiple Mode Support
 
 FreeDV can simultaneously decode the following modes when selected prior to pushing "Start":
